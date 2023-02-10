@@ -2,8 +2,8 @@
 #
 # Use FSL to create a spherical ROI at specific MNI coordinate
 
-# -41, +16, +54 mm maps to 65, 71, 63 ijk for MNI152_T1_2mm.nii.gz
-#  or to 131, 142, 126 ijk for MNI152_T1_1mm.nii.gz
+# -41, +16, +54 mm  maps to  65,  71 , 63 ijk  for MNI152_T1_2mm.nii.gz
+#                     or to 131, 142, 126 ijk  for MNI152_T1_1mm.nii.gz
 
 FSLOUTPUTTYPE=NIFTI
 
