@@ -21,13 +21,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Prep files
-cp "${t1_niigz}" "${out_dir}"
-gunzip "${t1_niigz}"
-export t1_nii="${t1_niigz%.gz}"
+export t1_nii="${out_dir}"/t1.nii
+gunzip -c "${t1_niigz}" > "${t1_nii}"
 
-cp "${roidefinv_niigz}" "${out_dir}"
-gunzip "${roidefinv_niigz}"
-export roidefinv_nii="${roidefinv_niigz%.gz}"
+export roidefinv_nii="${out_dir}"/iy_t1.nii
+gunzip -c "${roidefinv_niigz}" > "${roidefinv_nii}"
 
 # Most of the work is done in matlab
 run_spm12.sh ${MATLAB_RUNTIME} function resample_roi \
