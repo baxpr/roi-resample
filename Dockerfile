@@ -1,19 +1,12 @@
 FROM centos:7
 
 # Initial system
-# bc libgomp perl tcsh vim-common                    for FS
-#     mesa-libGL libXext libSM libXrender libXmu
 # java-1.8.0-openjdk                                 for MCR
-# mesa-libGLU mesa-dri-drivers                       for FS with xvfb
-# xorg-x11-server-Xvfb xorg-x11-xauth which          xvfb
+# xorg-x11-server-Xvfb xorg-x11-xauth which          for xvfb
 RUN yum -y update && \
     yum -y install wget tar zip unzip && \
-    yum -y install bc libgomp perl tcsh vim-common && \
-    yum -y install mesa-libGL libXext libSM libXrender libXmu && \
     yum -y install java-1.8.0-openjdk && \
-    yum -y install mesa-libGLU mesa-dri-drivers && \
     yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
-    yum -y install ImageMagick && \
     yum clean all
 
 # Install the MCR
