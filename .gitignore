@@ -2,4 +2,4 @@
 .DS_Store
 INPUTS
 OUTPUTS
-external/spm12_r7771
+src/external/spm12_r7771
