@@ -10,7 +10,7 @@ RUN yum -y update && \
     yum clean all
 
 # Install the MCR
-RUN wget -nv https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip \
+RUN wget -nv https://ssd.mathworks.com/supportfiles/downloads/R2023a/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2023a_Update_6_glnxa64.zip \
     -O /opt/mcr_installer.zip && \
     unzip /opt/mcr_installer.zip -d /opt/mcr_installer && \
     /opt/mcr_installer/install -mode silent -agreeToLicense yes && \
@@ -18,7 +18,10 @@ RUN wget -nv https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/d
 
 # Matlab env
 ENV MATLAB_SHELL=/bin/bash
-ENV MATLAB_RUNTIME=/usr/local/MATLAB/MATLAB_Runtime/v97
+ENV AGREE_TO_MATLAB_RUNTIME_LICENSE=yes
+ENV MATLAB_RUNTIME=/usr/local/MATLAB/MATLAB_Runtime/R2023a
+ENV MCR_INHIBIT_CTF_LOCK=1
+ENV MCR_CACHE_ROOT=/tmp
 
 # Copy the pipeline code. Matlab must be compiled before building. 
 COPY build /opt/resample-roi/build
