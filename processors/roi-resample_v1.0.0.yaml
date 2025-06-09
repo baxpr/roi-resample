@@ -1,0 +1,46 @@
+# Resample ROIs via cat12 warp
+---
+procyamlversion: 3.0.0-dev.0
+containers:
+  - name: roi
+    path: roi-resample_v1.0.0.sif
+    source: docker://baxterprogers/roi-resample:v1.0.0
+requirements:
+  walltime: '2:00:00'
+  memory: 8G
+
+inputs:
+  xnat:
+    filters:
+      - type: match
+        inputs: scan_t1,assr_cat12/t1scan
+    scans:
+      - name: scan_t1
+        types: cs_2.8_T1W_3D_TFE
+        skip_unusable: True
+        nifti: t1.nii.gz
+    assessors:
+      - name: assr_cat12
+        proctypes: cat12_ss2p0_v2
+        resources:
+          - {resource: DEF_INV, fdest: iy_t1.nii.gz}
+          
+outputs:
+  - dir: ROI_NATIVE
+
+command: 
+  type: singularity_exec
+  container: roi
+  args: >-
+    bash -c '
+    temp_file=\$(mktemp) &&
+    sed "/tty:x:5:/d" /etc/group > \$temp_file &&
+    cp \$temp_file /etc/group &&
+    xwrapper.sh pipeline.sh
+    --roi_nii sphere6mm_MNI_-41_+16_+54.nii
+    --roidefinv_niigz /INPUTS/iy_t1.nii.gz
+    --t1_niigz /INPUTS/t1.nii.gz
+    --out_dir /OUTPUTS
+    '
+
+jobtemplate: job_template_v3.txt
