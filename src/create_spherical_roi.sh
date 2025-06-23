@@ -7,6 +7,8 @@
 
 # -30, -66, 42 mm  maps to  120,  60, 114 ijk  for MNI152_T1_1mm.nii.gz
 
+# -36, -70, 51 mm  maps to  126,  56, 123 ijk
+
 FSLOUTPUTTYPE=NIFTI
 
 # Place a point and expand to sphere
@@ -20,3 +22,9 @@ fslmaths ${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz \
     -mul 0 -add 1 -roi 120 1 60 1 114 1 0 1 \
     -kernel sphere 6 -dilM \
     sphere6mm_MNI_-30_-66_+42
+
+
+fslmaths ${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz \
+    -mul 0 -add 1 -roi 126 1 56 1 123 1 0 1 \
+    -kernel sphere 6 -dilM \
+    sphere6mm_MNI_-36_-70_+51
