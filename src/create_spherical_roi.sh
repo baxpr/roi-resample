@@ -26,5 +26,5 @@ fslmaths ${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz \
 
 fslmaths ${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz \
     -mul 0 -add 1 -roi 120 1 60 1 114 1 0 1 \
-    -kernel sphere 24 -dilM \
-    sphere6mm_MNI_-30_-66_+42_24mm
+    -kernel sphere 18 -dilM \
+    sphere6mm_MNI_-30_-66_+42_18mm
