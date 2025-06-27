@@ -3,8 +3,8 @@
 procyamlversion: 3.0.0-dev.0
 containers:
   - name: roi
-    path: roi-resample_v1.2.2.sif
-    source: docker://baxterprogers/roi-resample:v1.2.2
+    path: roi-resample_v1.2.3.sif
+    source: docker://baxterprogers/roi-resample:v1.2.3
 requirements:
   walltime: '2:00:00'
   memory: 8G
