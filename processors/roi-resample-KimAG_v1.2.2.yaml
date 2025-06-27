@@ -3,8 +3,8 @@
 procyamlversion: 3.0.0-dev.0
 containers:
   - name: roi
-    path: roi-resample_v1.2.1.sif
-    source: docker://baxterprogers/roi-resample:v1.2.1
+    path: roi-resample_v1.2.2.sif
+    source: docker://baxterprogers/roi-resample:v1.2.2
 requirements:
   walltime: '2:00:00'
   memory: 8G
@@ -35,7 +35,7 @@ command:
   args: >-
     bash -c '
     xwrapper.sh pipeline.sh
-    --roi_nii sphere6mm_MNI_-30_-66_+42_18mm.nii
+    --roi_nii KimAGsphere10mm.nii
     --roidefinv_niigz /INPUTS/iy_t1.nii.gz
     --t1_niigz /INPUTS/t1.nii.gz
     --out_dir /OUTPUTS
