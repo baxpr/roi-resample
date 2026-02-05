@@ -7,7 +7,9 @@
 
 # -30, -66, 42 mm  maps to  120,  60, 114 ijk  for MNI152_T1_1mm.nii.gz
 
-# -36, -70, 51 mm  maps to  126,  56, 123 ijk
+# -36, -70, 51 mm  maps to  126,  56, 123 ijk  for MNI152_T1_1mm.nii.gz
+
+# -50, 30, 36 mm   maps to  140, 156, 108 ijk  for MNI152_T1_1mm.nii.gz
 
 FSLOUTPUTTYPE=NIFTI
 
@@ -28,3 +30,8 @@ fslmaths ${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz \
     -mul 0 -add 1 -roi 120 1 60 1 114 1 0 1 \
     -kernel sphere 18 -dilM \
     sphere6mm_MNI_-30_-66_+42_18mm
+
+fslmaths ${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz \
+    -mul 0 -add 1 -roi 140 1 156 1 108 1 0 1 \
+    -kernel sphere 6 -dilM \
+    sphere6mm_MNI_-50_+30_+36
