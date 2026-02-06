@@ -33,9 +33,6 @@ command:
   container: roi
   args: >-
     bash -c '
-    temp_file=\$(mktemp) &&
-    sed "/tty:x:5:/d" /etc/group > \$temp_file &&
-    cp \$temp_file /etc/group &&
     xwrapper.sh pipeline.sh
     --roi_nii sphere6mm_MNI_-50_+30_+36.nii
     --roidefinv_niigz /INPUTS/iy_t1.nii.gz
