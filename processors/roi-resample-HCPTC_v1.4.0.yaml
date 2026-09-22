@@ -34,7 +34,7 @@ command:
   args: >-
     bash -c '
     xwrapper.sh pipeline.sh
-    --roi_nii HW_HCP_TC.nii.gz
+    --roi_nii HW_HCP_TC.nii
     --roidefinv_niigz /INPUTS/iy_t1.nii.gz
     --t1_niigz /INPUTS/t1.nii.gz
     --out_dir /OUTPUTS
